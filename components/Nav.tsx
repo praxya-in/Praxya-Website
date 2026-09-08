@@ -2,6 +2,9 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
+/* The compliance workspace (the product). Local demo: http://localhost:3100 · production: app.praxya.in */
+const APP_LOGIN_URL = `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://app.praxya.in'}/login`;
+
 const NAV_LINKS = [
   { label: 'How It Works', href: '#solution' },
   { label: 'CBAM', href: '#cbam' },
@@ -75,6 +78,9 @@ export default function Nav() {
 
           {/* Desktop CTAs */}
           <div className="nav-right">
+            <a href={APP_LOGIN_URL} className="nav-link nav-signin">
+              Sign in
+            </a>
             <a
               href="#contact"
               className="btn-secondary nav-cta"
@@ -128,6 +134,13 @@ export default function Nav() {
             ))}
           </div>
           <div className="mobile-ctas">
+            <a
+              href={APP_LOGIN_URL}
+              className="btn-secondary"
+              style={{ width: '100%', textAlign: 'center', marginBottom: 12 }}
+            >
+              Sign in to the workspace
+            </a>
             <a
               href="#contact"
               className="btn-primary"
@@ -288,6 +301,11 @@ export default function Nav() {
 
         .mobile-ctas {
           padding: 24px 0;
+        }
+
+        .nav-signin {
+          font-weight: 600;
+          white-space: nowrap;
         }
 
         @media (max-width: 768px) {
